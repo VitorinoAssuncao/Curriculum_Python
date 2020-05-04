@@ -9,7 +9,7 @@ class Jobs(db.Model):
     enterprise = db.Column (db.String,nullable=False)
     date_begin = db.Column (db.Date,nullable=False)
     date_out = db.Column (db.Date,nullable=False)
-    activites = db.Column (db.String,nullable=True)
+    activities = db.Column (db.String,nullable=True)
 
     def __init__(self,**args):
         super(Jobs,self).__init__(**args)
@@ -22,5 +22,5 @@ class Jobs(db.Model):
             "enterprise" : self.enterprise,
             "date_begin" : self.date_begin,
             "date_out" : self.date_out,
-            "activites" : self.activites
+            "activities" : self.activities
         }

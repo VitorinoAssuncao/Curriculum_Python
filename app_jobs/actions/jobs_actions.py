@@ -16,7 +16,7 @@ def create(data:dict) -> Jobs:
             enterprise = data['enterprise'],
             date_begin = data['date_begin'],
             date_out = data['date_out'],
-            activites = data['activites']
+            activities = data['activities']
         )
     )
 
@@ -31,3 +31,18 @@ def get_all_jobs() -> dict:
 def get_all_jobs_from_one_user(id:int) -> dict:
     all_job_from_user = Jobs.query.filter_by(user_id=id).first()
     return all_job_from_user
+
+def update_job(job_id:int,new_data:dict) -> Jobs:
+    job = Jobs.query.get(job_id)
+    job.function = new_data['function'],
+    job.enterprise = new_data['enterprise'],
+    job.date_begin = new_data['date_begin'],
+    job.date_out = new_data['date_out'],
+    job.activities = new_data['activities']
+    commit()
+    return job
+
+def delete_job(job_id:int) -> str:
+    Jobs.query.filter_by(id_job=job_id).delete()
+    commit()
+    return "Experiência Profissional excluída com sucesso."

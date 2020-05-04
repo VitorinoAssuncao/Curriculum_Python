@@ -19,7 +19,6 @@ app_user = Blueprint("app_user",__name__)
 def post():
     user_data = request.get_json()
     result = validate_creation_data(user_data) 
-    print(result)
     if result == True:
         user = create(user_data)
         return jsonify(user.serialize()),201
@@ -52,4 +51,5 @@ def update(user_id:int):
 
 @app_user.route("/users/<user_id>",methods=["DELETE"])
 def delete(user_id:int):
-    return delete_user(user_id)
+    result =  delete_user(user_id)
+    return result,200

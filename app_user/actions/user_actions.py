@@ -37,6 +37,7 @@ def update_user(user_id:int,data_to_update:dict) -> User:
 
 def delete_user(user_id:int) -> str:
     User.query.filter_by(id=user_id).delete()
+    commit()
     return "Usuário removido com sucesso." 
 
 def login(user_login:str,password:str) -> User:
