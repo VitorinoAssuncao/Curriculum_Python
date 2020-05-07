@@ -3,6 +3,7 @@ from database.database import db
 from database.database import migrate
 from app_user.views.user_views import app_user
 from app_jobs.views.jobs_views import app_jobs
+from app_schooling.views.schooling_views import app_schooling
 
 app = Flask(__name__)
 app.config.from_object('app_user.settings')
@@ -11,5 +12,6 @@ migrate.init_app(app,db)
 
 app.register_blueprint(app_user)
 app.register_blueprint(app_jobs)
+app.register_blueprint(app_schooling)
 
 app.run()
